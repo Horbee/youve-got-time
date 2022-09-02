@@ -8,16 +8,22 @@ import type { ReactNode } from "react";
 const AuthContext = createContext<{ user: User | null } | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
+  const [initialized, setInitialized] = useState(false);
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    const unsub = onAuthStateChanged(firebaseAuth, setUser);
+    const unsub = onAuthStateChanged(firebaseAuth, (user) => {
+      setUser(user);
+      setInitialized(true);
+    });
 
     return () => unsub();
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ user }}>
+      {initialized && children}
+    </AuthContext.Provider>
   );
 };
 
