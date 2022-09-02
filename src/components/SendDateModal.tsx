@@ -1,12 +1,16 @@
+import { addDoc, collection } from 'firebase/firestore'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { toast } from 'react-toastify'
 
 import {
     Button, Modal, Select, Stack, Text, Textarea, TextInput, useMantineTheme
 } from '@mantine/core'
 import { TimeRangeInput } from '@mantine/dates'
 
-import { SendDateValues } from '../types/SendDateValues'
+import { db } from '../config/firebase'
+import { useAuth } from '../context/AuthProvider'
 
+import type { SendDateValues } from "../types/SendDateValues";
 import type { ModalProps } from "@mantine/core";
 interface SendDateModalProps extends ModalProps {
   selectedDate: Date | null;
@@ -17,19 +21,40 @@ export const SendDateModal = ({
   ...restProps
 }: SendDateModalProps) => {
   const theme = useMantineTheme();
+  const { user } = useAuth();
 
   const {
     register,
     handleSubmit,
     setValue,
-    formState: { isSubmitting },
+    reset,
+    watch,
+    formState: { isSubmitting, errors },
   } = useForm<SendDateValues>({
-    defaultValues: { name: localStorage.getItem("lastUsedUsername") ?? "" },
+    defaultValues: {
+      name: localStorage.getItem("lastUsedUsername") ?? "",
+      comment: "",
+    },
   });
 
   const onSubmit: SubmitHandler<SendDateValues> = async (values) => {
-    console.log(values);
-    localStorage.setItem("lastUsedUsername", values.name);
+    const { time, ...restValues } = values;
+
+    try {
+      await addDoc(collection(db, "availabilities"), {
+        ...restValues,
+        uid: user?.uid,
+        date: selectedDate,
+        fromTime: time[0] ?? null,
+        untilTime: time[1] ?? null,
+      });
+
+      localStorage.setItem("lastUsedUsername", values.name);
+      reset();
+      restProps.onClose();
+    } catch (error: any) {
+      toast.error(error.message || "Availability not sent.");
+    }
   };
 
   return (
@@ -49,12 +74,15 @@ export const SendDateModal = ({
           <Text>{selectedDate?.toDateString()}</Text>
 
           <TextInput
+            withAsterisk
             placeholder="Your name"
             label="Name"
-            {...register("name")}
+            error={errors.name?.message}
+            {...register("name", { required: "Name is required" })}
           />
 
           <Select
+            withAsterisk
             label="Availability"
             placeholder="Pick one"
             data={[
@@ -62,7 +90,9 @@ export const SendDateModal = ({
               { value: "maybe", label: "Maybe" },
               { value: "notgood", label: "Not good" },
             ]}
-            {...register("available")}
+            error={errors.available?.message}
+            // {...register("available", { required: "This field is required" })}
+            value={watch("available")}
             onChange={(value) => setValue("available", value)}
           />
 

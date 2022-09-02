@@ -20,5 +20,7 @@ const getAvailabilityBadge = (available: AvailableTypes) => {
       return { text: "Maybe", color: "orange" };
     case "notgood":
       return { text: "Not Available", color: "red" };
+    default:
+      return { text: "Default", color: "yellow" };
   }
 };

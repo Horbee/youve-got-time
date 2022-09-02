@@ -15,7 +15,7 @@ export const AvailabilityList = ({ selectedDate }: { selectedDate: Date }) => {
     return availabilities.filter(
       (a) => isSameDay(a.date, selectedDate) && a.uid !== user?.uid
     );
-  }, [availabilities, selectedDate]);
+  }, [availabilities, selectedDate, user]);
 
   return (
     <div>
