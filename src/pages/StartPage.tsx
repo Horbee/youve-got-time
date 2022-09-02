@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react'
 import { Center, Container, createStyles } from '@mantine/core'
 import { Calendar } from '@mantine/dates'
 
+import { AvailabilityList } from '../components/AvailabilityList'
+import { OwnAvailability } from '../components/OwnAvailability'
 import { SendDateModal } from '../components/SendDateModal'
 import { firebaseLogout } from '../config/firebase'
 
@@ -17,18 +19,14 @@ const useStyles = createStyles((theme) => ({
 }));
 
 export const StartPage = () => {
-  const [value, setValue] = useState<Date | null>(null);
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [opened, setOpened] = useState(false);
   const { classes, cx } = useStyles();
-
-  useEffect(() => {
-    if (value) setOpened(true);
-  }, [value]);
 
   return (
     <>
       <SendDateModal
-        selectedDate={value}
+        selectedDate={selectedDate}
         opened={opened}
         onClose={() => setOpened(false)}
       />
@@ -37,8 +35,8 @@ export const StartPage = () => {
         <button onClick={firebaseLogout}>Logout</button>
         <Center>
           <Calendar
-            value={value}
-            onChange={setValue}
+            value={selectedDate}
+            onChange={setSelectedDate}
             dayClassName={(date, modifiers) =>
               cx({
                 [classes.unavailable]: modifiers.weekend,
@@ -47,6 +45,16 @@ export const StartPage = () => {
             }
           />
         </Center>
+
+        {selectedDate && (
+          <>
+            <OwnAvailability
+              selectedDate={selectedDate}
+              openModal={() => setOpened(true)}
+            />
+            <AvailabilityList selectedDate={selectedDate} />
+          </>
+        )}
       </Container>
     </>
   );

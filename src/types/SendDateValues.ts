@@ -1,5 +1,6 @@
 export type SendDateValues = {
-  availability: string | null;
+  name: string;
+  available: string | null;
   time: [Date | null, Date | null];
   comment: string;
 };

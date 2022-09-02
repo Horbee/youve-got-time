@@ -6,6 +6,7 @@ import { MantineProvider } from '@mantine/core'
 import { AuthenticatedRoute } from './components/AuthenticatedRoute'
 import { AppRoutes } from './config/app-routes'
 import { AuthProvider } from './context/AuthProvider'
+import { AvailabilityProvider } from './context/AvailabilityProvider'
 import { LoginPage, RegisterPage, StartPage } from './pages'
 
 export const App = () => {
@@ -18,7 +19,9 @@ export const App = () => {
               path={AppRoutes.Start}
               element={
                 <AuthenticatedRoute>
-                  <StartPage />
+                  <AvailabilityProvider>
+                    <StartPage />
+                  </AvailabilityProvider>
                 </AuthenticatedRoute>
               }
             />

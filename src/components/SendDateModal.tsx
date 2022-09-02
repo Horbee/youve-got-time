@@ -1,6 +1,8 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
 
-import { Button, Modal, Select, Stack, Text, Textarea, useMantineTheme } from '@mantine/core'
+import {
+    Button, Modal, Select, Stack, Text, Textarea, TextInput, useMantineTheme
+} from '@mantine/core'
 import { TimeRangeInput } from '@mantine/dates'
 
 import { SendDateValues } from '../types/SendDateValues'
@@ -21,10 +23,13 @@ export const SendDateModal = ({
     handleSubmit,
     setValue,
     formState: { isSubmitting },
-  } = useForm<SendDateValues>();
+  } = useForm<SendDateValues>({
+    defaultValues: { name: localStorage.getItem("lastUsedUsername") ?? "" },
+  });
 
   const onSubmit: SubmitHandler<SendDateValues> = async (values) => {
     console.log(values);
+    localStorage.setItem("lastUsedUsername", values.name);
   };
 
   return (
@@ -43,6 +48,12 @@ export const SendDateModal = ({
         <Stack>
           <Text>{selectedDate?.toDateString()}</Text>
 
+          <TextInput
+            placeholder="Your name"
+            label="Name"
+            {...register("name")}
+          />
+
           <Select
             label="Availability"
             placeholder="Pick one"
@@ -51,8 +62,8 @@ export const SendDateModal = ({
               { value: "maybe", label: "Maybe" },
               { value: "notgood", label: "Not good" },
             ]}
-            {...register("availability")}
-            onChange={(value) => setValue("availability", value)}
+            {...register("available")}
+            onChange={(value) => setValue("available", value)}
           />
 
           <TimeRangeInput

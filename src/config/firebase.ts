@@ -1,5 +1,6 @@
 import { initializeApp } from 'firebase/app'
 import { getAuth, signInWithEmailAndPassword, signOut } from 'firebase/auth'
+import { getFirestore } from 'firebase/firestore'
 
 const firebaseConfig: {
   [key: string]: string | undefined;
@@ -15,6 +16,7 @@ if (Object.values(firebaseConfig).some((value) => value === undefined)) {
 }
 
 const firebaseApp = initializeApp(firebaseConfig);
+export const db = getFirestore(firebaseApp);
 export const firebaseAuth = getAuth(firebaseApp);
 
 export const firebaseLogin = (email: string, password: string) => {
