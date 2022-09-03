@@ -2,13 +2,12 @@ import { addDoc, collection } from 'firebase/firestore'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 
-import {
-    Button, Modal, Select, Stack, Text, Textarea, TextInput, useMantineTheme
-} from '@mantine/core'
-import { TimeRangeInput } from '@mantine/dates'
+import { Button, Modal, Stack, Text, Textarea, TextInput, useMantineTheme } from '@mantine/core'
 
 import { db } from '../config/firebase'
 import { useAuth } from '../context/AuthProvider'
+import { AppointmentTimeInput } from './fields/AppointmentTimeInput'
+import { AvailabilitySelect } from './fields/AvailabilitySelect'
 
 import type { SendDateValues } from "../types/SendDateValues";
 import type { ModalProps } from "@mantine/core";
@@ -26,9 +25,8 @@ export const SendDateModal = ({
   const {
     register,
     handleSubmit,
-    setValue,
     reset,
-    watch,
+    control,
     formState: { isSubmitting, errors },
   } = useForm<SendDateValues>({
     defaultValues: {
@@ -81,27 +79,9 @@ export const SendDateModal = ({
             {...register("name", { required: "Name is required" })}
           />
 
-          <Select
-            withAsterisk
-            label="Availability"
-            placeholder="Pick one"
-            data={[
-              { value: "good", label: "Available" },
-              { value: "maybe", label: "Maybe" },
-              { value: "notgood", label: "Not good" },
-            ]}
-            error={errors.available?.message}
-            // {...register("available", { required: "This field is required" })}
-            value={watch("available")}
-            onChange={(value) => setValue("available", value)}
-          />
+          <AvailabilitySelect control={control} />
 
-          <TimeRangeInput
-            label="Appointment time"
-            clearable
-            {...register("time")}
-            onChange={(value) => setValue("time", value)}
-          />
+          <AppointmentTimeInput control={control} />
 
           <Textarea
             placeholder="Your comment"
@@ -119,7 +99,6 @@ export const SendDateModal = ({
           </Button>
         </Stack>
       </form>
-      {/* Modal content */}
     </Modal>
   );
 };
