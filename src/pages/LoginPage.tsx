@@ -1,8 +1,9 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { MdOutlineEmail, MdOutlinePassword } from 'react-icons/md'
+import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
-import { Button, Container, Input, PasswordInput, Stack } from '@mantine/core'
+import { Anchor, Button, Container, PasswordInput, Stack, TextInput } from '@mantine/core'
 
 import { AppRoutes } from '../config/app-routes'
 import { firebaseLogin } from '../config/firebase'
@@ -35,18 +36,13 @@ export const LoginPage = () => {
         <h1>Login</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Stack spacing="sm">
-            <div>
-              <Input.Label>Email</Input.Label>
-              <Input
-                icon={<MdOutlineEmail />}
-                placeholder="Your email"
-                invalid={!!errors.email?.message}
-                {...register("email", { required: "Email is required" })}
-              />
-              {errors.email && (
-                <Input.Error>{errors.email.message}</Input.Error>
-              )}
-            </div>
+            <TextInput
+              label="Email"
+              icon={<MdOutlineEmail />}
+              placeholder="Your email"
+              error={errors.email?.message}
+              {...register("email", { required: "Email is required" })}
+            />
 
             <PasswordInput
               icon={<MdOutlinePassword />}
@@ -63,6 +59,10 @@ export const LoginPage = () => {
             >
               Login
             </Button>
+
+            <Anchor component={Link} to={AppRoutes.Register}>
+              Register
+            </Anchor>
           </Stack>
         </form>
       </div>

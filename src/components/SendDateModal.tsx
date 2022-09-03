@@ -49,6 +49,7 @@ export const SendDateModal = ({
 
       localStorage.setItem("lastUsedUsername", values.name);
       reset();
+      reset({ name: values.name });
       restProps.onClose();
     } catch (error: any) {
       toast.error(error.message || "Availability not sent.");

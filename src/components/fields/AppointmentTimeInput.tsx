@@ -20,8 +20,6 @@ export const AppointmentTimeInput = ({
     defaultValue: [null, null],
   });
 
-  console.log(value);
-
   return (
     <TimeRangeInput
       label="Appointment time"
