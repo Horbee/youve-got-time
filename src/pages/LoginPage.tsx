@@ -7,7 +7,7 @@ import { Anchor, Button, Container, PasswordInput, Stack, TextInput } from "@man
 
 import { AppRoutes } from "../config/app-routes"
 import { firebaseLogin } from "../config/firebase"
-import { useAuthenticatedRedirect } from "../hooks/useAuthenticatedRedirect"
+import { useAuthenticatedRedirect } from "../hooks"
 
 import type { SubmitHandler } from "react-hook-form";
 import type { LoginFormValues } from "../types";

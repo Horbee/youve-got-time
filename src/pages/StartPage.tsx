@@ -5,9 +5,9 @@ import { MdLogout } from "react-icons/md"
 import { Button, Center, Container, createStyles, Group } from "@mantine/core"
 import { Calendar } from "@mantine/dates"
 
+import { AvailabilityFormModal } from "../components/AvailabilityFormModal"
 import { AvailabilityList } from "../components/AvailabilityList"
 import { OwnAvailability } from "../components/OwnAvailability"
-import { SendDateModal } from "../components/SendDateModal"
 import { firebaseLogout } from "../config/firebase"
 import { useAvailabilities } from "../context/AvailabilityProvider"
 
@@ -42,7 +42,7 @@ export const StartPage = () => {
 
   return (
     <>
-      <SendDateModal
+      <AvailabilityFormModal
         selectedDate={selectedDate}
         opened={opened}
         onClose={() => setOpened(false)}

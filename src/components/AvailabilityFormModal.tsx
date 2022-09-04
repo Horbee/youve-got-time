@@ -1,24 +1,23 @@
-import { addDoc, collection } from "firebase/firestore"
-import { SubmitHandler, useForm } from "react-hook-form"
+import { useForm } from "react-hook-form"
 import { toast } from "react-toastify"
 
 import { Button, Modal, Stack, Text, Textarea, TextInput, useMantineTheme } from "@mantine/core"
 
-import { db } from "../config/firebase"
+import { addFirebaseDocument } from "../config/firebase"
 import { useAuth } from "../context/AuthProvider"
-import { AppointmentTimeInput } from "./fields/AppointmentTimeInput"
-import { AvailabilitySelect } from "./fields/AvailabilitySelect"
+import { AppointmentTimeInput, AvailabilitySelect } from "./fields"
 
-import type { AvailabilityFormValues } from "../types/AvailabilityFormValues";
+import type { SubmitHandler } from "react-hook-form";
+import type { AvailabilityFormValues } from "../types";
 import type { ModalProps } from "@mantine/core";
-interface SendDateModalProps extends ModalProps {
+interface AvailabilityFormModalProps extends ModalProps {
   selectedDate: Date | null;
 }
 
-export const SendDateModal = ({
+export const AvailabilityFormModal = ({
   selectedDate,
   ...restProps
-}: SendDateModalProps) => {
+}: AvailabilityFormModalProps) => {
   const theme = useMantineTheme();
   const { user } = useAuth();
 
@@ -39,7 +38,7 @@ export const SendDateModal = ({
     const { time, ...restValues } = values;
 
     try {
-      await addDoc(collection(db, "availabilities"), {
+      await addFirebaseDocument("availabilities", {
         ...restValues,
         uid: user?.uid,
         date: selectedDate,
