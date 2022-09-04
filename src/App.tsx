@@ -1,13 +1,13 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { ToastContainer } from 'react-toastify'
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { ToastContainer } from "react-toastify"
 
-import { MantineProvider } from '@mantine/core'
+import { MantineProvider } from "@mantine/core"
 
-import { AuthenticatedRoute } from './components/AuthenticatedRoute'
-import { AppRoutes } from './config/app-routes'
-import { AuthProvider } from './context/AuthProvider'
-import { AvailabilityProvider } from './context/AvailabilityProvider'
-import { LoginPage, RegisterPage, StartPage } from './pages'
+import { AuthenticatedRoute } from "./components/AuthenticatedRoute"
+import { AppRoutes } from "./config/app-routes"
+import { AuthProvider } from "./context/AuthProvider"
+import { AvailabilityProvider } from "./context/AvailabilityProvider"
+import { LoginPage, RegisterPage, StartPage } from "./pages"
 
 export const App = () => {
   return (

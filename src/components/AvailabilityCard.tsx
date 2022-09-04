@@ -1,9 +1,9 @@
-import format from 'date-fns/format'
+import format from "date-fns/format"
 
-import { Card, Group, Stack, Text } from '@mantine/core'
+import { Card, Group, Stack, Text } from "@mantine/core"
 
-import { Availability } from '../types'
-import { AvailabilityBadge } from './AvailabilityBadge'
+import { Availability } from "../types"
+import { AvailabilityBadge } from "./AvailabilityBadge"
 
 export const AvailabilityCard = ({ av }: { av: Availability }) => {
   return (

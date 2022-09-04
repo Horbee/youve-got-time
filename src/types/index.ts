@@ -1,3 +1,4 @@
 export * from "./Availability";
-export * from "./LoginValues";
-export * from "./SendDateValues";
+export * from "./LoginFormValues";
+export * from "./RegisterFormValues";
+export * from "./AvailabilityFormValues";

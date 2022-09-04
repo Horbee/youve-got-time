@@ -1,15 +1,15 @@
-import { addDoc, collection } from 'firebase/firestore'
-import { SubmitHandler, useForm } from 'react-hook-form'
-import { toast } from 'react-toastify'
+import { addDoc, collection } from "firebase/firestore"
+import { SubmitHandler, useForm } from "react-hook-form"
+import { toast } from "react-toastify"
 
-import { Button, Modal, Stack, Text, Textarea, TextInput, useMantineTheme } from '@mantine/core'
+import { Button, Modal, Stack, Text, Textarea, TextInput, useMantineTheme } from "@mantine/core"
 
-import { db } from '../config/firebase'
-import { useAuth } from '../context/AuthProvider'
-import { AppointmentTimeInput } from './fields/AppointmentTimeInput'
-import { AvailabilitySelect } from './fields/AvailabilitySelect'
+import { db } from "../config/firebase"
+import { useAuth } from "../context/AuthProvider"
+import { AppointmentTimeInput } from "./fields/AppointmentTimeInput"
+import { AvailabilitySelect } from "./fields/AvailabilitySelect"
 
-import type { SendDateValues } from "../types/SendDateValues";
+import type { AvailabilityFormValues } from "../types/AvailabilityFormValues";
 import type { ModalProps } from "@mantine/core";
 interface SendDateModalProps extends ModalProps {
   selectedDate: Date | null;
@@ -28,14 +28,14 @@ export const SendDateModal = ({
     reset,
     control,
     formState: { isSubmitting, errors },
-  } = useForm<SendDateValues>({
+  } = useForm<AvailabilityFormValues>({
     defaultValues: {
       name: localStorage.getItem("lastUsedUsername") ?? "",
       comment: "",
     },
   });
 
-  const onSubmit: SubmitHandler<SendDateValues> = async (values) => {
+  const onSubmit: SubmitHandler<AvailabilityFormValues> = async (values) => {
     const { time, ...restValues } = values;
 
     try {

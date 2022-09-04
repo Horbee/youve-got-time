@@ -1,12 +1,12 @@
-import { useController } from 'react-hook-form'
+import { useController } from "react-hook-form"
 
-import { TimeRangeInput } from '@mantine/dates'
+import { TimeRangeInput } from "@mantine/dates"
 
 import type { Control } from "react-hook-form";
-import type { SendDateValues } from "../../types";
+import type { AvailabilityFormValues } from "../../types";
 
 interface AppointmentTimeInputProps {
-  control: Control<SendDateValues, any>;
+  control: Control<AvailabilityFormValues, any>;
 }
 
 export const AppointmentTimeInput = ({
@@ -14,7 +14,7 @@ export const AppointmentTimeInput = ({
 }: AppointmentTimeInputProps) => {
   const {
     field: { onChange, onBlur, name, value, ref },
-  } = useController<SendDateValues>({
+  } = useController<AvailabilityFormValues>({
     name: "time",
     control,
     defaultValue: [null, null],

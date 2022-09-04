@@ -1,4 +1,4 @@
-export type RegsiterValues = {
+export type RegsiterFormValues = {
   email: string;
   password: string;
   confirmPassword: string;

@@ -1,8 +1,6 @@
-import { initializeApp } from 'firebase/app'
-import {
-    createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut
-} from 'firebase/auth'
-import { getFirestore } from 'firebase/firestore'
+import { initializeApp } from "firebase/app"
+import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth"
+import { getFirestore } from "firebase/firestore"
 
 const firebaseConfig: {
   [key: string]: string | undefined;

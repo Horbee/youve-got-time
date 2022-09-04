@@ -1,9 +1,9 @@
-import { collection, onSnapshot, query } from 'firebase/firestore'
-import { createContext, useContext, useEffect, useState } from 'react'
+import { collection, onSnapshot, query } from "firebase/firestore"
+import { createContext, useContext, useEffect, useState } from "react"
 
-import { db } from '../config/firebase'
-import { mapToAvailability } from '../mappers/availability-mapper'
-import { Availability } from '../types'
+import { db } from "../config/firebase"
+import { mapToAvailability } from "../mappers/availability-mapper"
+import { Availability } from "../types"
 
 import type { AvailabilityData } from "../models/AvailabilityData";
 import type { ReactNode } from "react";

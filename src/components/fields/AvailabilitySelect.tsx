@@ -1,18 +1,18 @@
-import { Control, useController } from 'react-hook-form'
+import { Control, useController } from "react-hook-form"
 
-import { Select } from '@mantine/core'
+import { Select } from "@mantine/core"
 
-import type { SendDateValues } from "../../types";
+import type { AvailabilityFormValues } from "../../types";
 
 interface AvailabilitySelectProps {
-  control: Control<SendDateValues, any>;
+  control: Control<AvailabilityFormValues, any>;
 }
 
 export const AvailabilitySelect = ({ control }: AvailabilitySelectProps) => {
   const {
     field: { onChange, onBlur, name, value, ref },
     fieldState: { error },
-  } = useController<SendDateValues>({
+  } = useController<AvailabilityFormValues>({
     name: "available",
     control,
     rules: { required: "This field is required" },

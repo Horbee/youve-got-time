@@ -1,14 +1,16 @@
-import { SubmitHandler, useForm } from 'react-hook-form'
-import { MdOutlineEmail, MdOutlinePassword } from 'react-icons/md'
-import { Link } from 'react-router-dom'
-import { toast } from 'react-toastify'
+import { useForm } from "react-hook-form"
+import { MdOutlineEmail, MdOutlinePassword } from "react-icons/md"
+import { Link } from "react-router-dom"
+import { toast } from "react-toastify"
 
-import { Anchor, Button, Container, PasswordInput, Stack, TextInput } from '@mantine/core'
+import { Anchor, Button, Container, PasswordInput, Stack, TextInput } from "@mantine/core"
 
-import { AppRoutes } from '../config/app-routes'
-import { firebaseLogin } from '../config/firebase'
-import { useAuthenticatedRedirect } from '../hooks/useAuthenticatedRedirect'
-import { LoginValues } from '../types/LoginValues'
+import { AppRoutes } from "../config/app-routes"
+import { firebaseLogin } from "../config/firebase"
+import { useAuthenticatedRedirect } from "../hooks/useAuthenticatedRedirect"
+
+import type { SubmitHandler } from "react-hook-form";
+import type { LoginFormValues } from "../types";
 
 export const LoginPage = () => {
   useAuthenticatedRedirect(AppRoutes.Start);
@@ -18,9 +20,12 @@ export const LoginPage = () => {
     handleSubmit,
     resetField,
     formState: { errors, isSubmitting },
-  } = useForm<LoginValues>();
+  } = useForm<LoginFormValues>();
 
-  const onSubmit: SubmitHandler<LoginValues> = async ({ email, password }) => {
+  const onSubmit: SubmitHandler<LoginFormValues> = async ({
+    email,
+    password,
+  }) => {
     try {
       await firebaseLogin(email, password);
     } catch (error: any) {

@@ -1,11 +1,11 @@
-import isSameDay from 'date-fns/isSameDay'
-import { useMemo } from 'react'
+import isSameDay from "date-fns/isSameDay"
+import { useMemo } from "react"
 
-import { Stack } from '@mantine/core'
+import { Stack } from "@mantine/core"
 
-import { useAuth } from '../context/AuthProvider'
-import { useAvailabilities } from '../context/AvailabilityProvider'
-import { AvailabilityCard } from './AvailabilityCard'
+import { useAuth } from "../context/AuthProvider"
+import { useAvailabilities } from "../context/AvailabilityProvider"
+import { AvailabilityCard } from "./AvailabilityCard"
 
 export const AvailabilityList = ({ selectedDate }: { selectedDate: Date }) => {
   const { availabilities } = useAvailabilities();

@@ -1,5 +1,5 @@
-import { AvailabilityData } from '../models/AvailabilityData'
-import { Availability } from '../types'
+import { AvailabilityData } from "../models/AvailabilityData"
+import { Availability } from "../types"
 
 export function mapToAvailability(
   data: AvailabilityData,

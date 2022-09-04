@@ -1,14 +1,14 @@
-import isSameDay from 'date-fns/isSameDay'
-import { deleteDoc, doc } from 'firebase/firestore'
-import { MdDelete } from 'react-icons/md'
-import { toast } from 'react-toastify'
+import isSameDay from "date-fns/isSameDay"
+import { deleteDoc, doc } from "firebase/firestore"
+import { MdDelete } from "react-icons/md"
+import { toast } from "react-toastify"
 
-import { ActionIcon, Button, Group } from '@mantine/core'
+import { ActionIcon, Button, Group } from "@mantine/core"
 
-import { db } from '../config/firebase'
-import { useAuth } from '../context/AuthProvider'
-import { useAvailabilities } from '../context/AvailabilityProvider'
-import { AvailabilityCard } from './AvailabilityCard'
+import { db } from "../config/firebase"
+import { useAuth } from "../context/AuthProvider"
+import { useAvailabilities } from "../context/AvailabilityProvider"
+import { AvailabilityCard } from "./AvailabilityCard"
 
 interface OwnAvailabilityProps {
   selectedDate: Date;

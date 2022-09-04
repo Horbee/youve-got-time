@@ -1,8 +1,8 @@
-import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 
-import { AppRoutes } from '../config/app-routes'
-import { useAuth } from '../context/AuthProvider'
+import { AppRoutes } from "../config/app-routes"
+import { useAuth } from "../context/AuthProvider"
 
 export const useAuthenticatedRedirect = (to: AppRoutes) => {
   const { user } = useAuth();

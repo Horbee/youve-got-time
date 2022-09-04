@@ -1,4 +1,4 @@
-import { Badge } from '@mantine/core'
+import { Badge } from "@mantine/core"
 
 import type { AvailableTypes } from "../types";
 

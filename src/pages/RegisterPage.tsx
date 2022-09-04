@@ -1,16 +1,16 @@
-import { useForm } from 'react-hook-form'
-import { MdOutlineEmail, MdOutlinePassword } from 'react-icons/md'
-import { Link } from 'react-router-dom'
-import { toast } from 'react-toastify'
+import { useForm } from "react-hook-form"
+import { MdOutlineEmail, MdOutlinePassword } from "react-icons/md"
+import { Link } from "react-router-dom"
+import { toast } from "react-toastify"
 
-import { Anchor, Button, Container, PasswordInput, Stack, TextInput } from '@mantine/core'
+import { Anchor, Button, Container, PasswordInput, Stack, TextInput } from "@mantine/core"
 
-import { AppRoutes } from '../config/app-routes'
-import { firebaseRegister } from '../config/firebase'
-import { useAuthenticatedRedirect } from '../hooks/useAuthenticatedRedirect'
+import { AppRoutes } from "../config/app-routes"
+import { firebaseRegister } from "../config/firebase"
+import { useAuthenticatedRedirect } from "../hooks/useAuthenticatedRedirect"
 
 import type { SubmitHandler } from "react-hook-form";
-import type { RegsiterValues } from "../types/RegisterValues";
+import type { RegsiterFormValues } from "../types";
 export const RegisterPage = () => {
   useAuthenticatedRedirect(AppRoutes.Start);
 
@@ -20,9 +20,9 @@ export const RegisterPage = () => {
     resetField,
     watch,
     formState: { errors, isSubmitting },
-  } = useForm<RegsiterValues>();
+  } = useForm<RegsiterFormValues>();
 
-  const onSubmit: SubmitHandler<RegsiterValues> = async ({
+  const onSubmit: SubmitHandler<RegsiterFormValues> = async ({
     email,
     password,
   }) => {

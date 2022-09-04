@@ -1,7 +1,7 @@
-import { Navigate } from 'react-router-dom'
+import { Navigate } from "react-router-dom"
 
-import { AppRoutes } from '../config/app-routes'
-import { useAuth } from '../context/AuthProvider'
+import { AppRoutes } from "../config/app-routes"
+import { useAuth } from "../context/AuthProvider"
 
 export const AuthenticatedRoute = ({ children }: { children: JSX.Element }) => {
   const { user } = useAuth();
