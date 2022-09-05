@@ -9,14 +9,13 @@ type UseFirebaseCollectionReturn<K> = [K[], FirestoreError | undefined];
 
 export const useFirebaseCollection = <T, K>(
   mapper: MappingFunction<T, K>,
-  path: string,
-  ...pathSegments: string[]
+  path: string
 ): UseFirebaseCollectionReturn<K> => {
   const [documents, setDocuments] = useState<K[]>([]);
   const [error, setError] = useState<FirestoreError>();
 
   useEffect(() => {
-    const q = query(collection(db, path, ...pathSegments));
+    const q = query(collection(db, path));
 
     const unsub = onSnapshot(
       q,
@@ -32,7 +31,7 @@ export const useFirebaseCollection = <T, K>(
     );
 
     return () => unsub();
-  }, [mapper, path, pathSegments]);
+  }, [mapper, path]);
 
   return [documents, error];
 };
