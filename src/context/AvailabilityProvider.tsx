@@ -1,4 +1,5 @@
-import { createContext, useContext } from "react"
+import { createContext, useContext, useEffect } from "react"
+import { toast } from "react-toastify"
 
 import { useFirebaseCollection } from "../hooks"
 import { mapToAvailability } from "../mappers/availability-mapper"
@@ -10,10 +11,17 @@ const AvailabilityContext = createContext<
 >(undefined);
 
 export const AvailabilityProvider = ({ children }: { children: ReactNode }) => {
-  const [availabilities] = useFirebaseCollection(
+  const [availabilities, error] = useFirebaseCollection(
     mapToAvailability,
     "availabilities"
   );
+
+  useEffect(() => {
+    if (error) {
+      toast.error(error.message);
+      console.error(error);
+    }
+  }, [error]);
 
   return (
     <AvailabilityContext.Provider value={{ availabilities }}>
