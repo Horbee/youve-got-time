@@ -64,7 +64,11 @@ export const StartPage = () => {
           <Calendar
             value={selectedDate}
             onChange={setSelectedDate}
-            dayStyle={(date) => ({ backgroundColor: getDateColor(date) })}
+            dayStyle={(date) => ({
+              backgroundColor: getDateColor(date),
+              borderRadius: "50%",
+              border: "1px solid #fff",
+            })}
             dayClassName={(date, modifiers) =>
               cx({ [classes.weekend]: modifiers.weekend })
             }
