@@ -1,10 +1,9 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { ToastContainer } from "react-toastify"
 
-import { MantineProvider } from "@mantine/core"
-
 import { AuthenticatedRoute } from "./components/AuthenticatedRoute"
 import { AppRoutes } from "./config/app-routes"
+import { AppMantineProvider } from "./context/AppMantineProvider"
 import { AuthProvider } from "./context/AuthProvider"
 import { AvailabilityProvider } from "./context/AvailabilityProvider"
 import { LoginPage, RegisterPage, StartPage } from "./pages"
@@ -12,7 +11,7 @@ import { LoginPage, RegisterPage, StartPage } from "./pages"
 export const App = () => {
   return (
     <AuthProvider>
-      <MantineProvider withGlobalStyles withNormalizeCSS>
+      <AppMantineProvider>
         <BrowserRouter>
           <Routes>
             <Route
@@ -29,7 +28,7 @@ export const App = () => {
             <Route path={AppRoutes.Register} element={<RegisterPage />} />
           </Routes>
         </BrowserRouter>
-      </MantineProvider>
+      </AppMantineProvider>
       <ToastContainer
         position="bottom-center"
         theme="colored"

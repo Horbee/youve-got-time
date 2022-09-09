@@ -8,6 +8,7 @@ import { Calendar } from "@mantine/dates"
 import { AvailabilityFormModal } from "../components/AvailabilityFormModal"
 import { AvailabilityList } from "../components/AvailabilityList"
 import { OwnAvailability } from "../components/OwnAvailability"
+import { ToggleColorSchemeButton } from "../components/ToggleColorSchemeButton"
 import { firebaseLogout } from "../config/firebase"
 import { useAvailabilities } from "../context/AvailabilityProvider"
 
@@ -51,14 +52,17 @@ export const StartPage = () => {
         <Group position="apart">
           <h3>Select a date</h3>
 
-          <Button
-            leftIcon={<MdLogout />}
-            variant="outline"
-            color="red"
-            onClick={firebaseLogout}
-          >
-            Logout
-          </Button>
+          <Group>
+            <ToggleColorSchemeButton />
+            <Button
+              leftIcon={<MdLogout />}
+              variant="outline"
+              color="red"
+              onClick={firebaseLogout}
+            >
+              Logout
+            </Button>
+          </Group>
         </Group>
         <Center>
           <Calendar
@@ -67,7 +71,7 @@ export const StartPage = () => {
             dayStyle={(date) => ({
               backgroundColor: getDateColor(date),
               borderRadius: "50%",
-              border: "1px solid #fff",
+              // border: "1px solid #fff",
             })}
             dayClassName={(date, modifiers) =>
               cx({ [classes.weekend]: modifiers.weekend })
