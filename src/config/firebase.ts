@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app"
-import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth"
+import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth"
 import { addDoc, collection, deleteDoc, doc, DocumentData, getFirestore } from "firebase/firestore"
 
 const firebaseConfig: {
@@ -25,6 +25,10 @@ export const firebaseLogin = (email: string, password: string) => {
 
 export const firebaseRegister = (email: string, password: string) => {
   return createUserWithEmailAndPassword(firebaseAuth, email, password);
+};
+
+export const firebaseLoginGoogle = () => {
+  return signInWithPopup(firebaseAuth, new GoogleAuthProvider());
 };
 
 export const firebaseLogout = () => {

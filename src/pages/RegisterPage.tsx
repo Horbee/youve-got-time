@@ -86,7 +86,7 @@ export const RegisterPage = () => {
             </Button>
 
             <Anchor component={Link} to={AppRoutes.Login}>
-              Login
+              Already have an account? Login
             </Anchor>
           </Stack>
         </form>

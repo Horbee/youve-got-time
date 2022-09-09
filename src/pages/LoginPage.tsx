@@ -5,13 +5,13 @@ import { toast } from "react-toastify"
 
 import { Anchor, Button, Container, PasswordInput, Stack, TextInput } from "@mantine/core"
 
+import { GoogleLoginButton } from "../components/GoogleLoginButton"
 import { AppRoutes } from "../config/app-routes"
 import { firebaseLogin } from "../config/firebase"
 import { useAuthenticatedRedirect } from "../hooks"
 
 import type { SubmitHandler } from "react-hook-form";
 import type { LoginFormValues } from "../types";
-
 export const LoginPage = () => {
   useAuthenticatedRedirect(AppRoutes.Start);
 
@@ -64,9 +64,10 @@ export const LoginPage = () => {
             >
               Login
             </Button>
+            <GoogleLoginButton />
 
             <Anchor component={Link} to={AppRoutes.Register}>
-              Register
+              Create an account
             </Anchor>
           </Stack>
         </form>
