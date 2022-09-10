@@ -1,16 +1,17 @@
-import isSameDay from "date-fns/isSameDay"
-import { useState } from "react"
-import { MdLogout } from "react-icons/md"
+import isSameDay from "date-fns/isSameDay";
+import { useState } from "react";
+import { MdLogout } from "react-icons/md";
 
-import { Button, Center, Container, createStyles, Group } from "@mantine/core"
-import { Calendar } from "@mantine/dates"
+import { Button, Center, Container, createStyles, Group } from "@mantine/core";
+import { Calendar } from "@mantine/dates";
 
-import { AvailabilityFormModal } from "../components/AvailabilityFormModal"
-import { AvailabilityList } from "../components/AvailabilityList"
-import { OwnAvailability } from "../components/OwnAvailability"
-import { ToggleColorSchemeButton } from "../components/ToggleColorSchemeButton"
-import { firebaseLogout } from "../config/firebase"
-import { useAvailabilities } from "../context/AvailabilityProvider"
+import { AvailabilityModal } from "../components/availability-form/AvailabilityModal";
+import { AvailabilityList } from "../components/AvailabilityList";
+import { OwnAvailability } from "../components/OwnAvailability";
+import { ToggleColorSchemeButton } from "../components/ToggleColorSchemeButton";
+import { firebaseLogout } from "../config/firebase";
+import { AvailabilityModalProvider } from "../context/AvailabilityModalProvider";
+import { useAvailabilities } from "../context/AvailabilityProvider";
 
 const useStyles = createStyles((theme) => ({
   weekend: {
@@ -20,7 +21,6 @@ const useStyles = createStyles((theme) => ({
 
 export const StartPage = () => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-  const [opened, setOpened] = useState(false);
   const { classes, cx } = useStyles();
   const { availabilities } = useAvailabilities();
 
@@ -42,12 +42,8 @@ export const StartPage = () => {
   };
 
   return (
-    <>
-      <AvailabilityFormModal
-        selectedDate={selectedDate}
-        opened={opened}
-        onClose={() => setOpened(false)}
-      />
+    <AvailabilityModalProvider>
+      <AvailabilityModal selectedDate={selectedDate} />
       <Container size="xs" px="xs">
         <Group position="apart">
           <h3>Select a date</h3>
@@ -81,14 +77,11 @@ export const StartPage = () => {
 
         {selectedDate && (
           <>
-            <OwnAvailability
-              selectedDate={selectedDate}
-              openModal={() => setOpened(true)}
-            />
+            <OwnAvailability selectedDate={selectedDate} />
             <AvailabilityList selectedDate={selectedDate} />
           </>
         )}
       </Container>
-    </>
+    </AvailabilityModalProvider>
   );
 };

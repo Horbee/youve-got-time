@@ -1,6 +1,21 @@
-import { initializeApp } from "firebase/app"
-import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth"
-import { addDoc, collection, deleteDoc, doc, DocumentData, getFirestore } from "firebase/firestore"
+import { initializeApp } from "firebase/app";
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  GoogleAuthProvider,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+} from "firebase/auth";
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  DocumentData,
+  getFirestore,
+  setDoc,
+} from "firebase/firestore";
 
 const firebaseConfig: {
   [key: string]: string | undefined;
@@ -37,6 +52,10 @@ export const firebaseLogout = () => {
 
 export const addFirebaseDocument = (path: string, data: DocumentData) => {
   return addDoc(collection(db, path), data);
+};
+
+export const updateFirebaseDocument = (path: string, data: DocumentData) => {
+  return setDoc(doc(db, path), data);
 };
 
 export const deleteFirebaseDocument = (

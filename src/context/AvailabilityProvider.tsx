@@ -1,11 +1,12 @@
-import { createContext, useContext, useEffect } from "react"
-import { toast } from "react-toastify"
+import { createContext, useContext, useEffect } from "react";
+import { toast } from "react-toastify";
 
-import { useFirebaseCollection } from "../hooks"
-import { mapToAvailability } from "../mappers/availability-mapper"
-import { Availability } from "../types"
+import { useFirebaseCollection } from "../hooks";
+import { mapToAvailability } from "../mappers/availability-mapper";
 
+import type { Availability } from "../types";
 import type { ReactNode } from "react";
+
 const AvailabilityContext = createContext<
   { availabilities: Availability[] } | undefined
 >(undefined);
