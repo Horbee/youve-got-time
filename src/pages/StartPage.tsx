@@ -1,17 +1,14 @@
-import isSameDay from "date-fns/isSameDay";
-import { useState } from "react";
-import { MdLogout } from "react-icons/md";
+import isSameDay from "date-fns/isSameDay"
+import { useState } from "react"
+import { MdLogout } from "react-icons/md"
 
-import { Button, Center, Container, createStyles, Group } from "@mantine/core";
-import { Calendar } from "@mantine/dates";
+import { Button, Center, Container, createStyles, Group } from "@mantine/core"
+import { Calendar } from "@mantine/dates"
 
-import { AvailabilityModal } from "../components/availability-form/AvailabilityModal";
-import { AvailabilityList } from "../components/AvailabilityList";
-import { OwnAvailability } from "../components/OwnAvailability";
-import { ToggleColorSchemeButton } from "../components/ToggleColorSchemeButton";
-import { firebaseLogout } from "../config/firebase";
-import { AvailabilityModalProvider } from "../context/AvailabilityModalProvider";
-import { useAvailabilities } from "../context/AvailabilityProvider";
+import { AvailabilityList, OwnAvailability, ToggleColorSchemeButton } from "../components"
+import { AvailabilityModal } from "../components/availability-form"
+import { firebaseLogout } from "../config/firebase"
+import { AvailabilityModalProvider, useAvailabilities } from "../context"
 
 const useStyles = createStyles((theme) => ({
   weekend: {

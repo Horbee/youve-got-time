@@ -1,21 +1,6 @@
-import { initializeApp } from "firebase/app";
-import {
-  createUserWithEmailAndPassword,
-  getAuth,
-  GoogleAuthProvider,
-  signInWithEmailAndPassword,
-  signInWithPopup,
-  signOut,
-} from "firebase/auth";
-import {
-  addDoc,
-  collection,
-  deleteDoc,
-  doc,
-  DocumentData,
-  getFirestore,
-  setDoc,
-} from "firebase/firestore";
+import { initializeApp } from "firebase/app"
+import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth"
+import { addDoc, collection, deleteDoc, doc, DocumentData, getFirestore, setDoc } from "firebase/firestore"
 
 const firebaseConfig: {
   [key: string]: string | undefined;

@@ -25,7 +25,7 @@ export const AvailabilityCard = ({ av }: { av: Availability }) => {
   );
 };
 
-const getTime = (fromTime?: Date, untilTime?: Date): string => {
+const getTime = (fromTime?: Date | null, untilTime?: Date | null): string => {
   const elements: string[] = [];
 
   if (fromTime) elements.push(format(fromTime, "HH:mm"));
