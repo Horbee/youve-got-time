@@ -30,8 +30,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "test": "react-scripts test"
   },
   "eslintConfig": {
     "extends": [
@@ -53,6 +53,8 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^7.5.0",
-    "@jackfranklin/test-data-bot": "^2.0.0"
+    "@jackfranklin/test-data-bot": "^2.0.0",
+    "@testing-library/cypress": "^8.0.3",
+    "cypress": "^10.8.0"
   }
 }

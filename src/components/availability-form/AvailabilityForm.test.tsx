@@ -1,14 +1,19 @@
-import addHours from "date-fns/addHours"
-import getHours from "date-fns/getHours"
-import startOfToday from "date-fns/startOfToday"
+import addHours from "date-fns/addHours";
+import getHours from "date-fns/getHours";
+import startOfToday from "date-fns/startOfToday";
 
-import { faker } from "@faker-js/faker"
-import { build, oneOf, perBuild } from "@jackfranklin/test-data-bot"
-import { render, screen } from "@testing-library/react"
-import userEvent from "@testing-library/user-event"
+import { faker } from "@faker-js/faker";
+import { build, oneOf, perBuild } from "@jackfranklin/test-data-bot";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 
-import { Availability, AvailabilityFormValues, AvailabilityOptions, AvailableTypes } from "../../types"
-import { AvailabilityForm } from "./AvailabilityForm"
+import {
+  Availability,
+  AvailabilityFormValues,
+  AvailabilityOptions,
+  AvailableTypes,
+} from "../../types";
+import { AvailabilityForm } from "./AvailabilityForm";
 
 const availabilityBuilder = build<Availability>({
   fields: {
@@ -57,7 +62,7 @@ function getInputs() {
 }
 
 function setup(selectedAvailability?: Availability) {
-  jest.setTimeout(10000);
+  // jest.setTimeout(10000);
   const mocks = formMocks();
   const user = userEvent.setup();
 
@@ -142,7 +147,7 @@ test("create: calls onSubmitCallback with form values", async () => {
 
   expect(submitCallbackMock).toHaveBeenCalledTimes(1);
   expect(submitCallbackMock).toHaveBeenCalledWith(formValues);
-});
+}, 10000);
 
 test("edit: renders form with expected values of selected availability", async () => {
   const selectedAvailability = availabilityBuilder();
@@ -200,4 +205,4 @@ test("edit: calls onSubmitCallback with edited values", async () => {
 
   expect(submitCallbackMock).toHaveBeenCalledTimes(1);
   expect(submitCallbackMock).toHaveBeenCalledWith(formValues);
-});
+}, 10000);
