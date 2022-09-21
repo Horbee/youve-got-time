@@ -5,3 +5,4 @@ export * from "./AvailabilityList";
 export * from "./GoogleLoginButton";
 export * from "./OwnAvailability";
 export * from "./ToggleColorSchemeButton";
+export * from "./Footer";

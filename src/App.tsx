@@ -1,12 +1,13 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { ToastContainer } from "react-toastify"
 
+import { Footer } from "./components"
 import { AuthenticatedRoute } from "./components/AuthenticatedRoute"
 import { AppRoutes } from "./config/app-routes"
 import { AppMantineProvider } from "./context/AppMantineProvider"
 import { AuthProvider } from "./context/AuthProvider"
 import { AvailabilityProvider } from "./context/AvailabilityProvider"
-import { LoginPage, RegisterPage, StartPage } from "./pages"
+import { AboutPage, LoginPage, RegisterPage, StartPage } from "./pages"
 
 export const App = () => {
   return (
@@ -26,7 +27,9 @@ export const App = () => {
             />
             <Route path={AppRoutes.Login} element={<LoginPage />} />
             <Route path={AppRoutes.Register} element={<RegisterPage />} />
+            <Route path={AppRoutes.About} element={<AboutPage />} />
           </Routes>
+          <Footer />
         </BrowserRouter>
       </AppMantineProvider>
       <ToastContainer
