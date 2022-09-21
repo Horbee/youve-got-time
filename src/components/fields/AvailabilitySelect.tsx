@@ -2,7 +2,7 @@ import { Control, useController } from "react-hook-form"
 
 import { Select } from "@mantine/core"
 
-import type { AvailabilityFormValues } from "../../types";
+import { AvailabilityFormValues, AvailabilityOptions } from "../../types"
 
 interface AvailabilitySelectProps {
   control: Control<AvailabilityFormValues, any>;
@@ -24,11 +24,7 @@ export const AvailabilitySelect = ({ control }: AvailabilitySelectProps) => {
       withAsterisk
       label="Availability"
       placeholder="Pick one"
-      data={[
-        { value: "good", label: "Available" },
-        { value: "maybe", label: "Maybe" },
-        { value: "notgood", label: "Not good" },
-      ]}
+      data={AvailabilityOptions}
       error={error?.message}
       onChange={onChange}
       onBlur={onBlur}
