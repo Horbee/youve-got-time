@@ -6,7 +6,6 @@ import { AppRoutes } from "../config/app-routes"
 
 export const Footer = () => {
   const location = useLocation();
-  console.log(location);
 
   return (
     <footer>
