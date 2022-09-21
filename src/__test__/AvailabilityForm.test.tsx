@@ -1,19 +1,14 @@
-import addHours from "date-fns/addHours";
-import getHours from "date-fns/getHours";
-import startOfToday from "date-fns/startOfToday";
+import addHours from "date-fns/addHours"
+import getHours from "date-fns/getHours"
+import startOfToday from "date-fns/startOfToday"
 
-import { faker } from "@faker-js/faker";
-import { build, oneOf, perBuild } from "@jackfranklin/test-data-bot";
-import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import { faker } from "@faker-js/faker"
+import { build, oneOf, perBuild } from "@jackfranklin/test-data-bot"
+import { render, screen } from "@testing-library/react"
+import userEvent from "@testing-library/user-event"
 
-import {
-  Availability,
-  AvailabilityFormValues,
-  AvailabilityOptions,
-  AvailableTypes,
-} from "../../types";
-import { AvailabilityForm } from "./AvailabilityForm";
+import { AvailabilityForm } from "../components/availability-form"
+import { Availability, AvailabilityFormValues, AvailabilityOptions, AvailableTypes } from "../types"
 
 const availabilityBuilder = build<Availability>({
   fields: {
