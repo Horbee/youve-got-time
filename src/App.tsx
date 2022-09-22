@@ -7,7 +7,7 @@ import { AppRoutes } from "./config/app-routes"
 import { AppMantineProvider } from "./context/AppMantineProvider"
 import { AuthProvider } from "./context/AuthProvider"
 import { AvailabilityProvider } from "./context/AvailabilityProvider"
-import { AboutPage, LoginPage, RegisterPage, StartPage } from "./pages"
+import { AboutPage, LoginPage, LoginRedirectPage, RegisterPage, StartPage } from "./pages"
 
 export const App = () => {
   return (
@@ -28,6 +28,10 @@ export const App = () => {
             <Route path={AppRoutes.Login} element={<LoginPage />} />
             <Route path={AppRoutes.Register} element={<RegisterPage />} />
             <Route path={AppRoutes.About} element={<AboutPage />} />
+            <Route
+              path={AppRoutes.LoginRedirect}
+              element={<LoginRedirectPage />}
+            />
           </Routes>
           <Footer />
         </BrowserRouter>

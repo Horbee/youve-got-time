@@ -7,7 +7,7 @@ import { Anchor, Button, Container, PasswordInput, Stack, TextInput } from "@man
 
 import { GoogleLoginButton } from "../components/GoogleLoginButton"
 import { AppRoutes } from "../config/app-routes"
-import { firebaseLogin } from "../config/firebase"
+import { sendFirebasePassworldessEmail } from "../config/firebase"
 import { useAuthenticatedRedirect } from "../hooks"
 
 import type { SubmitHandler } from "react-hook-form";
@@ -27,7 +27,9 @@ export const LoginPage = () => {
     password,
   }) => {
     try {
-      await firebaseLogin(email, password);
+      await sendFirebasePassworldessEmail(email);
+      window.localStorage.setItem("emailForSignIn", email);
+      toast.success("Email link is sent.");
     } catch (error: any) {
       resetField("password");
       console.error(error);

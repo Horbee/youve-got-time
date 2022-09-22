@@ -1,6 +1,8 @@
 import { initializeApp } from "firebase/app"
-import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth"
+import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, sendSignInLinkToEmail, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth"
 import { addDoc, collection, deleteDoc, doc, DocumentData, getFirestore, setDoc } from "firebase/firestore"
+
+import { AppRoutes } from "./app-routes"
 
 const firebaseConfig: {
   [key: string]: string | undefined;
@@ -18,6 +20,13 @@ if (Object.values(firebaseConfig).some((value) => value === undefined)) {
 const firebaseApp = initializeApp(firebaseConfig);
 export const db = getFirestore(firebaseApp);
 export const firebaseAuth = getAuth(firebaseApp);
+
+export const sendFirebasePassworldessEmail = (email: string) => {
+  return sendSignInLinkToEmail(firebaseAuth, email, {
+    url: window.location.origin + AppRoutes.LoginRedirect,
+    handleCodeInApp: true,
+  });
+};
 
 export const firebaseLogin = (email: string, password: string) => {
   return signInWithEmailAndPassword(firebaseAuth, email, password);
