@@ -1,13 +1,13 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom"
-import { ToastContainer } from "react-toastify"
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
-import { Footer } from "./components"
-import { AuthenticatedRoute } from "./components/AuthenticatedRoute"
-import { AppRoutes } from "./config/app-routes"
-import { AppMantineProvider } from "./context/AppMantineProvider"
-import { AuthProvider } from "./context/AuthProvider"
-import { AvailabilityProvider } from "./context/AvailabilityProvider"
-import { AboutPage, LoginPage, LoginRedirectPage, RegisterPage, StartPage } from "./pages"
+import { Footer } from "./components";
+import { AuthenticatedRoute } from "./components/AuthenticatedRoute";
+import { AppRoutes } from "./config/app-routes";
+import { AppMantineProvider } from "./context/AppMantineProvider";
+import { AuthProvider } from "./context/AuthProvider";
+import { AvailabilityProvider } from "./context/AvailabilityProvider";
+import { AboutPage, LoginPage, LoginRedirectPage, StartPage } from "./pages";
 
 export const App = () => {
   return (
@@ -26,12 +26,12 @@ export const App = () => {
               }
             />
             <Route path={AppRoutes.Login} element={<LoginPage />} />
-            <Route path={AppRoutes.Register} element={<RegisterPage />} />
             <Route path={AppRoutes.About} element={<AboutPage />} />
             <Route
               path={AppRoutes.LoginRedirect}
               element={<LoginRedirectPage />}
             />
+            <Route path="*" element={<Navigate to={AppRoutes.Start} />} />
           </Routes>
           <Footer />
         </BrowserRouter>

@@ -1,8 +1,23 @@
-import { initializeApp } from "firebase/app"
-import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, sendSignInLinkToEmail, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth"
-import { addDoc, collection, deleteDoc, doc, DocumentData, getFirestore, setDoc } from "firebase/firestore"
+import { initializeApp } from "firebase/app";
+import {
+  getAuth,
+  GoogleAuthProvider,
+  sendSignInLinkToEmail,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+} from "firebase/auth";
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  DocumentData,
+  getFirestore,
+  setDoc,
+} from "firebase/firestore";
 
-import { AppRoutes } from "./app-routes"
+import { AppRoutes } from "./app-routes";
 
 const firebaseConfig: {
   [key: string]: string | undefined;
@@ -30,10 +45,6 @@ export const sendFirebasePassworldessEmail = (email: string) => {
 
 export const firebaseLogin = (email: string, password: string) => {
   return signInWithEmailAndPassword(firebaseAuth, email, password);
-};
-
-export const firebaseRegister = (email: string, password: string) => {
-  return createUserWithEmailAndPassword(firebaseAuth, email, password);
 };
 
 export const firebaseLoginGoogle = () => {

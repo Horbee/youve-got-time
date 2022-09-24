@@ -1,14 +1,19 @@
-import { useForm } from "react-hook-form"
-import { MdOutlineEmail, MdOutlinePassword } from "react-icons/md"
-import { Link } from "react-router-dom"
-import { toast } from "react-toastify"
+import { useForm } from "react-hook-form";
+import { MdOutlineEmail, MdOutlinePassword } from "react-icons/md";
+import { toast } from "react-toastify";
 
-import { Anchor, Button, Container, PasswordInput, Stack, TextInput } from "@mantine/core"
+import {
+  Button,
+  Container,
+  PasswordInput,
+  Stack,
+  TextInput,
+} from "@mantine/core";
 
-import { GoogleLoginButton } from "../components/GoogleLoginButton"
-import { AppRoutes } from "../config/app-routes"
-import { sendFirebasePassworldessEmail } from "../config/firebase"
-import { useAuthenticatedRedirect } from "../hooks"
+import { GoogleLoginButton } from "../components/GoogleLoginButton";
+import { AppRoutes } from "../config/app-routes";
+import { sendFirebasePassworldessEmail } from "../config/firebase";
+import { useAuthenticatedRedirect } from "../hooks";
 
 import type { SubmitHandler } from "react-hook-form";
 import type { LoginFormValues } from "../types";
@@ -67,10 +72,6 @@ export const LoginPage = () => {
               Login
             </Button>
             <GoogleLoginButton />
-
-            <Anchor component={Link} to={AppRoutes.Register}>
-              Create an account
-            </Anchor>
           </Stack>
         </form>
       </div>
