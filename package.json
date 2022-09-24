@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "prebuild": "test \"$CI\" = true && npx pnpm install -r --store=node_modules/.pnpm-store || echo skipping pnpm install",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "test": "vitest",
@@ -31,7 +32,6 @@
     "@testing-library/cypress": "^8.0.3",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
-    "@testing-library/react-hooks": "^8.0.1",
     "@testing-library/user-event": "^14.4.3",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
