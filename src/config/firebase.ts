@@ -3,7 +3,6 @@ import {
   getAuth,
   GoogleAuthProvider,
   sendSignInLinkToEmail,
-  signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
 } from "firebase/auth";
@@ -36,15 +35,11 @@ const firebaseApp = initializeApp(firebaseConfig);
 export const db = getFirestore(firebaseApp);
 export const firebaseAuth = getAuth(firebaseApp);
 
-export const sendFirebasePassworldessEmail = (email: string) => {
+export const sendFirebaseLoginEmail = (email: string) => {
   return sendSignInLinkToEmail(firebaseAuth, email, {
     url: window.location.origin + AppRoutes.LoginRedirect,
     handleCodeInApp: true,
   });
-};
-
-export const firebaseLogin = (email: string, password: string) => {
-  return signInWithEmailAndPassword(firebaseAuth, email, password);
 };
 
 export const firebaseLoginGoogle = () => {
