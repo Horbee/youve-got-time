@@ -1,9 +1,9 @@
-import { IoLogoGoogle } from "react-icons/io"
-import { toast } from "react-toastify"
+import { IoLogoGoogle } from "react-icons/io";
+import { toast } from "react-toastify";
 
-import { Button } from "@mantine/core"
+import { Button } from "@mantine/core";
 
-import { firebaseLoginGoogle } from "../config/firebase"
+import { firebaseLoginGoogle } from "../../config/firebase";
 
 export const GoogleLoginButton = () => {
   const handleFirebaseLogin = () => {
