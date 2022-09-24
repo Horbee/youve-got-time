@@ -1,14 +1,14 @@
-import { isSignInWithEmailLink, signInWithEmailLink } from "firebase/auth";
-import { useEffect } from "react";
-import { toast } from "react-toastify";
+import { isSignInWithEmailLink, signInWithEmailLink } from "firebase/auth"
+import { useEffect } from "react"
+import { toast } from "react-toastify"
 
-import { Card, Stack, Text } from "@mantine/core";
+import { Card, Stack, Text } from "@mantine/core"
 
-import { AppRoutes } from "../config/app-routes";
-import { firebaseAuth } from "../config/firebase";
-import { useAuthenticatedRedirect } from "../hooks";
+import { AppRoutes } from "../config/app-routes"
+import { firebaseAuth } from "../config/firebase"
+import { useAuthenticatedRedirect } from "../hooks"
 
-export const LoginRedirectPage = () => {
+const LoginRedirectPage = () => {
   useAuthenticatedRedirect(AppRoutes.Start);
 
   useEffect(() => {
@@ -39,3 +39,5 @@ export const LoginRedirectPage = () => {
     </Card>
   );
 };
+
+export default LoginRedirectPage;

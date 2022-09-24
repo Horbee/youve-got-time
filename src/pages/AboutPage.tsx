@@ -2,7 +2,7 @@ import { FaGithub } from "react-icons/fa"
 
 import { Anchor, Card, Container, Group, Text } from "@mantine/core"
 
-export const AboutPage = () => {
+const AboutPage = () => {
   return (
     <Container size="xs" px="xs">
       <Card shadow="sm" p="lg" radius="md" mt="lg" withBorder>
@@ -31,3 +31,5 @@ export const AboutPage = () => {
     </Container>
   );
 };
+
+export default AboutPage;

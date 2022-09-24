@@ -16,7 +16,7 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export const StartPage = () => {
+const StartPage = () => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const { classes, cx } = useStyles();
   const { availabilities } = useAvailabilities();
@@ -82,3 +82,5 @@ export const StartPage = () => {
     </AvailabilityModalProvider>
   );
 };
+
+export default StartPage;

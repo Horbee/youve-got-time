@@ -1,16 +1,16 @@
-import { useState } from "react";
-import { toast } from "react-toastify";
+import { useState } from "react"
+import { toast } from "react-toastify"
 
-import { Container } from "@mantine/core";
+import { Container } from "@mantine/core"
 
-import { LoginForm, LoginSuccess } from "../components/login";
-import { AppRoutes, sendFirebaseLoginEmail } from "../config";
-import { useAuthenticatedRedirect } from "../hooks";
+import { LoginForm, LoginSuccess } from "../components/login"
+import { AppRoutes, sendFirebaseLoginEmail } from "../config"
+import { useAuthenticatedRedirect } from "../hooks"
 
 import type { SubmitHandler } from "react-hook-form";
 import type { LoginFormValues } from "../types";
 
-export const LoginPage = () => {
+const LoginPage = () => {
   useAuthenticatedRedirect(AppRoutes.Start);
   const [emailSent, setIsEmailSent] = useState({
     email: "",
@@ -38,3 +38,5 @@ export const LoginPage = () => {
     </Container>
   );
 };
+
+export default LoginPage;

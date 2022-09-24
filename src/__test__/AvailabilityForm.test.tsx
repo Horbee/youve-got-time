@@ -1,7 +1,7 @@
 import addHours from "date-fns/addHours"
 import getHours from "date-fns/getHours"
 import startOfToday from "date-fns/startOfToday"
-import { afterEach, expect, test, vi } from "vitest"
+import { expect, test, vi } from "vitest"
 
 import { faker } from "@faker-js/faker"
 import { build, oneOf, perBuild } from "@jackfranklin/test-data-bot"
