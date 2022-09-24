@@ -1,30 +1,16 @@
-import { initializeApp } from "firebase/app";
-import {
-  getAuth,
-  GoogleAuthProvider,
-  sendSignInLinkToEmail,
-  signInWithPopup,
-  signOut,
-} from "firebase/auth";
-import {
-  addDoc,
-  collection,
-  deleteDoc,
-  doc,
-  DocumentData,
-  getFirestore,
-  setDoc,
-} from "firebase/firestore";
+import { initializeApp } from "firebase/app"
+import { getAuth, GoogleAuthProvider, sendSignInLinkToEmail, signInWithPopup, signOut } from "firebase/auth"
+import { addDoc, collection, deleteDoc, doc, DocumentData, getFirestore, setDoc } from "firebase/firestore"
 
-import { AppRoutes } from "./app-routes";
+import { AppRoutes } from "./app-routes"
 
 const firebaseConfig: {
   [key: string]: string | undefined;
 } = {
-  apiKey: process.env.REACT_APP_API_KEY,
-  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-  projectId: process.env.REACT_APP_PROJECT_ID,
-  appId: process.env.REACT_APP_APP_ID,
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  appId: import.meta.env.VITE_APP_ID,
 };
 
 if (Object.values(firebaseConfig).some((value) => value === undefined)) {

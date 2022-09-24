@@ -1,6 +1,7 @@
 import addHours from "date-fns/addHours"
 import getHours from "date-fns/getHours"
 import startOfToday from "date-fns/startOfToday"
+import { afterEach, expect, test, vi } from "vitest"
 
 import { faker } from "@faker-js/faker"
 import { build, oneOf, perBuild } from "@jackfranklin/test-data-bot"
@@ -36,13 +37,14 @@ const availabilityForm = build<AvailabilityFormValues>({
 });
 
 function formMocks() {
-  global.ResizeObserver = jest.fn().mockReturnValue({
-    observe: jest.fn(),
-    unobserve: jest.fn(),
-    disconnect: jest.fn(),
+  global.ResizeObserver = vi.fn().mockReturnValue({
+    observe: vi.fn(),
+    unobserve: vi.fn(),
+    disconnect: vi.fn(),
   });
+
   return {
-    submitCallbackMock: jest.fn(),
+    submitCallbackMock: vi.fn(),
   };
 }
 
@@ -57,7 +59,6 @@ function getInputs() {
 }
 
 function setup(selectedAvailability?: Availability) {
-  // jest.setTimeout(10000);
   const mocks = formMocks();
   const user = userEvent.setup();
 
