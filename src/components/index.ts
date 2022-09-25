@@ -5,3 +5,4 @@ export * from "./AvailabilityList";
 export * from "./OwnAvailability";
 export * from "./ToggleColorSchemeButton";
 export * from "./Footer";
+export * from "./PageLayout";

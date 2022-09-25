@@ -4,12 +4,11 @@ import { ToastContainer } from "react-toastify"
 
 import { LoadingOverlay } from "@mantine/core"
 
-import { AuthenticatedRoute } from "./components/AuthenticatedRoute"
+import { AuthenticatedRoute, PageLayout } from "./components"
+import { LoginForm, LoginSuccess } from "./components/login"
 import { AppRoutes } from "./config/app-routes"
-import { AppMantineProvider } from "./context/AppMantineProvider"
-import { AuthProvider } from "./context/AuthProvider"
-import { AvailabilityProvider } from "./context/AvailabilityProvider"
-import { PageLayout } from "./pages/PageLayout"
+import { AppMantineProvider, AuthProvider, AvailabilityProvider } from "./context"
+import { action as loginAction } from "./pages/LoginPage"
 
 const StartPage = lazy(() => import("./pages/StartPage"));
 const LoginPage = lazy(() => import("./pages/LoginPage"));
@@ -29,7 +28,10 @@ const router = createBrowserRouter(
           </AuthenticatedRoute>
         }
       />
-      <Route path="login" element={<LoginPage />} />
+      <Route path="login" element={<LoginPage />} action={loginAction}>
+        <Route index element={<LoginForm />} />
+        <Route path="success" element={<LoginSuccess />} />
+      </Route>
       <Route path="about" element={<AboutPage />} />
       <Route path="redirect" element={<LoginRedirectPage />} />
       <Route path="*" element={<Navigate to={AppRoutes.Start} />} />

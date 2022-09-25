@@ -1,40 +1,32 @@
-import { SubmitHandler, useForm } from "react-hook-form";
-import { MdOutlineEmail } from "react-icons/md";
+import { MdOutlineEmail } from "react-icons/md"
+import { Form, useActionData, useNavigation } from "react-router-dom"
 
-import { Button, Stack, Text, TextInput } from "@mantine/core";
+import { Button, Stack, Text, TextInput } from "@mantine/core"
 
-import { LoginFormValues } from "../../types";
-import { GoogleLoginButton } from "./GoogleLoginButton";
+import { GoogleLoginButton } from "./GoogleLoginButton"
 
-export const LoginForm = ({
-  onSubmit,
-}: {
-  onSubmit: SubmitHandler<LoginFormValues>;
-}) => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-  } = useForm<LoginFormValues>();
+export const LoginForm = () => {
+  const data = useActionData() as { errors: any };
+  const navigation = useNavigation();
 
   return (
     <div>
       <h1>Sign into your account</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <Form action="/login" method="post">
         <Stack spacing="sm">
           <TextInput
             label="Email"
+            name="email"
             icon={<MdOutlineEmail />}
             placeholder="Your email"
-            error={errors.email?.message}
-            {...register("email", { required: "Email is required" })}
+            error={data?.errors?.email}
           />
 
           <Button
             type="submit"
             variant="gradient"
             gradient={{ from: "orange", to: "red" }}
-            disabled={isSubmitting}
+            disabled={navigation.state === "submitting"}
           >
             Email a Login Link
           </Button>
@@ -45,7 +37,7 @@ export const LoginForm = ({
 
           <GoogleLoginButton />
         </Stack>
-      </form>
+      </Form>
     </div>
   );
 };
