@@ -2,6 +2,14 @@
 
 Open source project for synchronizing the availabilities of people.
 
+- Vite + React
+- PNPM
+- installable PWA
+- Route based Code Splitting
+- React Router 6.4 features
+- Lazy loading + Suspense
+- Cypress Component Tests + RTL
+
 ## Local setup
 
 ### Firebase Setup
@@ -26,7 +34,15 @@ if (window.location.hostname === "localhost") {
 
 ### Start the React app
 
+Make sure you have pnpm installed globally. In case you don't run the following script:
+
 ```
-npm install
-npm start
+npm install -g pnpm
+```
+
+Install the project's dependencies and run the app:
+
+```
+pnpm install
+pnpm run dev
 ```
