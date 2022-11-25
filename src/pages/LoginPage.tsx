@@ -1,8 +1,7 @@
 import { ActionFunction, Outlet, redirect } from "react-router-dom"
 import { toast } from "react-toastify"
 
-import { Container } from "@mantine/core"
-
+import { MotionContainer } from "../components/motion-components"
 import { AppRoutes, sendFirebaseLoginEmail } from "../config"
 import { useAuthenticatedRedirect } from "../hooks"
 
@@ -10,9 +9,15 @@ const LoginPage = () => {
   useAuthenticatedRedirect(AppRoutes.Start);
 
   return (
-    <Container size="xs" px="md">
+    <MotionContainer
+      size="xs"
+      px="md"
+      initial={{ opacity: 0, scale: 0 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5 }}
+    >
       <Outlet />
-    </Container>
+    </MotionContainer>
   );
 };
 

@@ -2,11 +2,12 @@ import isSameDay from "date-fns/isSameDay"
 import { useState } from "react"
 import { MdLogout } from "react-icons/md"
 
-import { Button, Center, Container, createStyles, Group } from "@mantine/core"
+import { Button, Center, createStyles, Group } from "@mantine/core"
 import { Calendar } from "@mantine/dates"
 
 import { AvailabilityList, OwnAvailability, ToggleColorSchemeButton } from "../components"
 import { AvailabilityModal } from "../components/availability-form"
+import { MotionContainer } from "../components/motion-components"
 import { firebaseLogout } from "../config/firebase"
 import { AvailabilityModalProvider, useAvailabilities } from "../context"
 
@@ -41,7 +42,13 @@ const StartPage = () => {
   return (
     <AvailabilityModalProvider>
       <AvailabilityModal selectedDate={selectedDate} />
-      <Container size="xs" px="xs">
+      <MotionContainer
+        size="xs"
+        px="xs"
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5 }}
+      >
         <Group position="apart">
           <h3>Select a date</h3>
 
@@ -78,7 +85,7 @@ const StartPage = () => {
             <AvailabilityList selectedDate={selectedDate} />
           </>
         )}
-      </Container>
+      </MotionContainer>
     </AvailabilityModalProvider>
   );
 };

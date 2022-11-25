@@ -19,6 +19,7 @@
     "date-fns": "^2.29.2",
     "dayjs": "^1.11.5",
     "firebase": "^9.9.4",
+    "framer-motion": "^7.6.12",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.34.2",
